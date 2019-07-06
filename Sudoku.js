@@ -55,7 +55,7 @@ class Sudoku {
             this.board[offset] = row;
         }
 
-        return row;
+        return this.board;
     }
 
     /**
@@ -83,7 +83,41 @@ class Sudoku {
      * @returns {Array} Returns the full board
      */
     fillBlock(offset) {
+        const board = this.board.slice(0);
+        const blockSize = this.size;
+        const startRow = Math.floor(offset / blockSize) * blockSize;
+        const startColumn = (offset % blockSize) * blockSize;
+        const endRow = startRow + (blockSize - 1);
+        const endColumn = startColumn + (blockSize - 1);
+        const temp = [];
 
+        for (let rowIndex = startRow; rowIndex <= endRow; rowIndex += 1) {
+            for (let colIndex = startColumn; colIndex <= endColumn; colIndex += 1) {
+                temp.push(board[rowIndex][colIndex]);
+            }
+        }
+
+        let missingCount = temp.filter(el => el === 0).length;
+
+        if (missingCount === 1) {
+            const index = temp.indexOf(0);
+            const sum = temp.reduce((acc, val) => acc + val);
+            temp[index] = this.sum - sum;
+
+            // reverse the array so that we can pop, instead of shifting the first element
+            // see https://jsperf.com/testing-array-shift-vs-array-reverse-and-array-pop
+            temp.reverse();
+
+            for (let rowIndex = startRow; rowIndex <= endRow; rowIndex += 1) {
+                for (let colIndex = startColumn; colIndex <= endColumn; colIndex += 1) {
+                    board[rowIndex][colIndex] = temp.pop();
+                }
+            }
+
+            this.board = board;
+
+            return this.board;
+        }
     }
 }
 

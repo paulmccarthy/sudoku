@@ -128,4 +128,66 @@ describe('Tests for Sudoku.js', function () {
             expect(game.board).to.deep.equal(expectedResult);
         });
     });
+
+    describe('#fillBlock', function () {
+        it('should fill Block 1 correctly when there is one missing number', function () {
+            const opts = {};
+            opts.board = [
+                [0, 1, 2, 0, 1, 2, 0, 1, 2],
+                [3, 4, 5, 3, 4, 5, 3, 4, 5],
+                [6, 7, 8, 6, 7, 8, 6, 7, 8],
+                [0, 1, 2, 0, 1, 2, 0, 1, 2],
+                [3, 4, 5, 3, 4, 5, 3, 4, 5],
+                [6, 7, 8, 6, 7, 8, 6, 7, 8],
+                [0, 1, 2, 0, 1, 2, 0, 1, 2],
+                [3, 4, 5, 3, 4, 5, 3, 4, 5],
+                [6, 7, 8, 6, 7, 8, 6, 7, 8]
+            ];
+            const expectedResult = [
+                [9, 1, 2, 0, 1, 2, 0, 1, 2],
+                [3, 4, 5, 3, 4, 5, 3, 4, 5],
+                [6, 7, 8, 6, 7, 8, 6, 7, 8],
+                [0, 1, 2, 0, 1, 2, 0, 1, 2],
+                [3, 4, 5, 3, 4, 5, 3, 4, 5],
+                [6, 7, 8, 6, 7, 8, 6, 7, 8],
+                [0, 1, 2, 0, 1, 2, 0, 1, 2],
+                [3, 4, 5, 3, 4, 5, 3, 4, 5],
+                [6, 7, 8, 6, 7, 8, 6, 7, 8]
+            ];
+
+            const game = new Sudoku(opts);
+            game.fillBlock(0);
+            expect(game.board).to.deep.equal(expectedResult);
+        });
+
+        it('should return the original board if there is more than one missing number', function () {
+            const opts = {};
+            opts.board = [
+                [0, 0, 2, 0, 0, 0, 0, 0, 0],
+                [3, 4, 5, 0, 0, 0, 0, 0, 0],
+                [6, 7, 8, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0]
+            ];
+            const expectedResult = [
+                [0, 0, 2, 0, 0, 0, 0, 0, 0],
+                [3, 4, 5, 0, 0, 0, 0, 0, 0],
+                [6, 7, 8, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0]
+            ];
+
+            const game = new Sudoku(opts);
+            game.fillBlock(0);
+            expect(game.board).to.deep.equal(expectedResult);
+        });
+    });
 });
