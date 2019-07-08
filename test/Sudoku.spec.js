@@ -1,3 +1,5 @@
+/* eslint-disable prefer-arrow-callback */
+
 const expect = require('chai').expect;
 const Board = require('../Board');
 const Sudoku = require('../Sudoku');
@@ -160,9 +162,11 @@ describe('Tests for Sudoku.js', function () {
             expect(game.board).to.deep.equal(expectedResult);
         });
 
-        it.only('should fill Block 1 correctly when there is one missing number (16 x 16)', function () {
+        it('should fill Block 1 correctly when there is one missing number (16 x 16)', function () {
             const opts = {};
             opts.board = [
+                /* eslint-disable array-bracket-spacing */
+                /* eslint-disable no-multi-spaces */
                 [ 0,  1,  2,  3,  0,  1,  2,  3,  0,  1,  2,  3,  0,  1,  2,  3],
                 [ 4,  5,  6,  7,  4,  5,  6,  7,  4,  5,  6,  7,  4,  5,  6,  7],
                 [ 8,  9, 10, 11,  8,  9, 10, 11,  8,  9, 10, 11,  8,  9, 10, 11],
@@ -179,8 +183,12 @@ describe('Tests for Sudoku.js', function () {
                 [ 4,  5,  6,  7,  4,  5,  6,  7,  4,  5,  6,  7,  4,  5,  6,  7],
                 [ 8,  9, 10, 11,  8,  9, 10, 11,  8,  9, 10, 11,  8,  9, 10, 11],
                 [12, 13, 14, 15, 12, 13, 14, 15, 12, 13, 14, 15, 12, 13, 14, 15]
+                /* eslint-enable no-multi-spaces */
+                /* eslint-enable array-bracket-spacing */
             ];
             const expectedResult = [
+                /* eslint-disable array-bracket-spacing */
+                /* eslint-disable no-multi-spaces */
                 [ 0,  1,  2,  3, 16,  1,  2,  3,  0,  1,  2,  3,  0,  1,  2,  3],
                 [ 4,  5,  6,  7,  4,  5,  6,  7,  4,  5,  6,  7,  4,  5,  6,  7],
                 [ 8,  9, 10, 11,  8,  9, 10, 11,  8,  9, 10, 11,  8,  9, 10, 11],
@@ -197,6 +205,8 @@ describe('Tests for Sudoku.js', function () {
                 [ 4,  5,  6,  7,  4,  5,  6,  7,  4,  5,  6,  7,  4,  5,  6,  7],
                 [ 8,  9, 10, 11,  8,  9, 10, 11,  8,  9, 10, 11,  8,  9, 10, 11],
                 [12, 13, 14, 15, 12, 13, 14, 15, 12, 13, 14, 15, 12, 13, 14, 15]
+                /* eslint-enable no-multi-spaces */
+                /* eslint-enable array-bracket-spacing */
             ];
 
             const game = new Sudoku(opts);

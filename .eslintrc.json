@@ -1,0 +1,3 @@
+{
+    "extends": "@creidhne/eslint-config-airbnb-paulmac"
+}

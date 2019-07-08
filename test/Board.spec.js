@@ -1,3 +1,5 @@
+/* eslint-disable prefer-arrow-callback */
+
 const expect = require('chai').expect;
 
 const Board = require('../Board');
@@ -10,7 +12,7 @@ const checkBoard = (board, size) => {
         expect(line).to.be.an('array');
         expect(line).to.have.lengthOf(size * size);
     });
-}
+};
 
 describe('Unit tests for Board.js', function () {
     it('should return an array of the correct size', function () {
